@@ -88,10 +88,3 @@ function processDir(files) {
     }
     return Q.all(promises);
 }
-
-all().then(function test(result) {
-    console.dir(result);
-}).fail(function (err) {
-    console.log('==========================err==========================');
-    console.dir(err);
-});
