@@ -20,7 +20,7 @@ function all() {
 }
 
 function readAll() {
-    return Q.nfcall(fs.readdir, '.')
+    return Q.nfcall(fs.readdir, __dirname)
         .then(processDir)
         .then(cacheResult);
 }
@@ -52,13 +52,18 @@ function processDir(files) {
 
             promises.push(
                 Q.all(
-                    toRead.map(readFile).concat(Q.nfcall(fs.readdir, path.join(__dirname, recipeId)))
+                    toRead.map(readFile)
+                        .concat(Q.nfcall(fs.readdir, path.join(__dirname, recipeId)))
                 )
                     .then(prepareRecipe)
             );
 
             function readFile(fileName) {
-                return Q.nfcall(fs.readFile, path.join(__dirname, recipeId, fileName), 'utf8');
+                return Q.nfcall(
+                    fs.readFile,
+                    path.join(__dirname, recipeId, fileName),
+                    'utf8'
+                );
             }
 
             function prepareRecipe(datas) {
@@ -71,7 +76,6 @@ function processDir(files) {
                 if (plan) {
                     plan = plan.replace('.plan_', '');
                 }
-
                 return _.extend({
                     _id: recipeId,
                     description: desc,
@@ -79,8 +83,8 @@ function processDir(files) {
                     plan: plan,
                     icon: GIT_CONTENT_PATH + recipeId + IMAGE_SMALL,
                     image: GIT_CONTENT_PATH + recipeId + IMAGE_LARGE,
-                    compId: 'salesforce',   //temp
-                    partnerId: 'debitoor',  //temp
+                    compId: 'salesforce',   //@todo this must be deleted
+                    partnerId: 'debitoor',  //@todo this must be overwritten somehow??
                     tags: tags
                 }, JSON.parse(datas[2]));
             }
