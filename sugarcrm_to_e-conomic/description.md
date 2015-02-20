@@ -1,3 +1,1 @@
-## Test
-
-SugarCRM **to** e-conomic
+SugarCRM to e-conomic
