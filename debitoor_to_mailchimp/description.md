@@ -1,0 +1,1 @@
+Sync Debitoor customers as Mailchimp subscribers
