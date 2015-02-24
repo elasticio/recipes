@@ -1,1 +1,1 @@
-Salesforce Contacts, Leads and Accounts to Debitoor
+Salesforce Contacts and Accounts to Debitoor

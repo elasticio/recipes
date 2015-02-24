@@ -1,0 +1,1 @@
+Subscribe E-conomic customers to a Mailchimp list
