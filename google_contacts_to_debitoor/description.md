@@ -1,1 +1,1 @@
-Google **Contacts** to Debitoor
+Google Contacts to Debitoor
