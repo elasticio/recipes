@@ -1,1 +1,1 @@
-Upload Debitoor invoice documents to Dropbox
+Upload Debitoor invoice **documents** to *Dropbox*
