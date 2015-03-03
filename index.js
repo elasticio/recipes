@@ -4,9 +4,8 @@ var markdown = require('markdown').markdown;
 var fs = require('fs');
 var path = require('path');
 var toRead = ['description.md', 'title.txt', 'recipe.json'];
-var GIT_CONTENT_PATH = 'https://raw.githubusercontent.com/elasticio/recipes/master/';
-var IMAGE_LARGE = '/icon_large.png';
-var IMAGE_SMALL = '/icon_small.png';
+var BRANCH = process.env.RECIPES_BRANCH || 'master';
+var GIT_CONTENT_PATH = 'https://raw.githubusercontent.com/elasticio/recipes/';
 var cache;
 
 exports.all = all;
@@ -32,6 +31,18 @@ function cacheResult(result) {
 
 function tagsFilter(filename) {
     return !filename.indexOf('.tag_');
+}
+
+function iconsFilter(filename) {
+    return !filename.indexOf('icon_');
+}
+
+function iconsMap(filename) {
+    var title = filename
+        .replace('icon_', '')
+        .replace('.png', '');
+
+    return [title, filename];
 }
 
 function tagsMap(filename) {
@@ -72,19 +83,27 @@ function processDir(files) {
                 var title = datas[1];
                 var tags = files.filter(tagsFilter).map(tagsMap);
                 var plan = _.find(files, filterPlan);
+                var images = {};
+
+                files
+                    .filter(iconsFilter)
+                    .map(iconsMap)
+                    .forEach(addImage);
 
                 if (plan) {
                     plan = plan.replace('.plan_', '');
                 }
+
+                function addImage(pair) {
+                    images[pair[0]] = GIT_CONTENT_PATH + path.join(BRANCH, recipeId, pair[1]);
+                }
+
                 return _.extend({
                     _id: recipeId,
                     description: desc,
                     title: title,
                     plan: plan,
-                    icon: GIT_CONTENT_PATH + recipeId + IMAGE_SMALL,
-                    image: GIT_CONTENT_PATH + recipeId + IMAGE_LARGE,
-                    compId: 'salesforce',   //@todo this must be deleted
-                    partnerId: 'debitoor',  //@todo this must be overwritten somehow??
+                    images: images,
                     tags: tags
                 }, JSON.parse(datas[2]));
             }
