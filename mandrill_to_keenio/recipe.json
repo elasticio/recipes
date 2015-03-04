@@ -1,0 +1,33 @@
+{
+    "recipes":[
+        {
+            "title": "Mandrill events to Keen.io collection",
+            "description": "Mandrill events to Keen.io collection",
+            "data": {
+                "step_2": {}
+            },
+            "recipe": {
+                "connections": [
+                    {
+                        "from": "step_1",
+                        "to": "step_2"
+                    }
+                ],
+                "nodes": [
+                    {
+                        "compId": "mandrill",
+                        "function": "event",
+                        "id": "step_1",
+                        "first": true
+                    },
+                    {
+                        "compId": "keen",
+                        "function": "sendEvent",
+                        "id": "step_2"
+                    }
+                ]
+            },
+            "dataRecordName":"event"
+        }
+    ]
+}
