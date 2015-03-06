@@ -1,1 +1,1 @@
-Create Billomat invoices from shipped Amazon Marketplace orders
+Create **Billomat** invoices from shipped **Amazon** Marketplace orders
