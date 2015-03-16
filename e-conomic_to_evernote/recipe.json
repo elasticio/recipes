@@ -1,0 +1,72 @@
+{
+    "cron": "*/3 * * * *",
+    "recipes": [
+        {
+            "data": {
+                "step_4": {
+                    "mapper": {
+                        "id": "{{id}}"
+                    }
+                },
+                "step_5": {
+                    "mapper": {
+                        "title" : "Invoice  {{id}}",
+                        "reminderOrder" : "",
+                        "tags" : "{{customer.name}},{{monthAndYear}}",
+                        "content" : "<div>     <div><b>{{customer.name}}</b></div>     <div>{{customer.address}}</div>     <div>{{customer.city}}</div>     <div>{{customer.county}}</div>     <div>{{customer.postalCode}}</div>     <div>{{customer.country}}</div> </div>  <div>     <div style=\"float: right; margin-bottom: 40px;\">         <table cellspacing=\"0\" style=\"width: 300px;\">             <tr>                 <td colspan=\"2\" style=\"padding: 5px; border-bottom: 1px solid #e0e0e0;\">                     <b>Invoice</b>                 </td>             </tr>             <tr>                 <td style=\"padding: 5px; vertical-align: middle;\">Date</td>                 <td style=\"text-align: right; vertical-align: middle;\">{{date}}</td>             </tr>             <tr>                 <td style=\"padding: 5px; text-align: left; vertical-align: middle;\">Final payment date</td>                 <td style=\"text-align: right; vertical-align: middle;\">{{dueDate}}</td>             </tr>             <tr style=\"background-color: #e0e0e0;\">                 <td style=\"padding: 5px; text-align: left; vertical-align: middle;\">                     <b>Total {{currency}}</b>                 </td>                 <td style=\"text-align: right; vertical-align: middle;\"><b>{{grossAmount}}</b></td>             </tr>         </table>     </div> </div>  <div style=\"clear: both;\"></div>  {{#if lines}}     <table border=\"0\" style=\"width: 100%; border: 1px solid #e0e0e0; margin-bottom: 40px;\" cellspacing=\"0\">         <tr style=\"background-color: #e0e0e0;\">             <td style=\"vertical-align: middle; padding: 3px;\">Item no.</td>             <td style=\"vertical-align: middle; padding: 3px;\">Item</td>             <td style=\"vertical-align: middle; padding: 3px;\">Quantity</td>             <td style=\"vertical-align: middle; padding: 3px;\">Unit</td>             <td style=\"vertical-align: middle; padding: 3px;\">Unit price</td>             <td style=\"vertical-align: middle; padding: 3px;\">Disc.</td>             <td style=\"vertical-align: middle; padding: 3px;\">VAT rate</td>             <td style=\"vertical-align: middle; padding: 3px;\">VAT amt.</td>             <td style=\"vertical-align: middle; padding: 3px;\">Total inc. VAT</td>         </tr>         {{#each lines}}         <tr>             <td style=\"padding: 3px;\">{{lineNumber}}</td>             <td style=\"padding: 3px;\">{{description}}</td>             <td style=\"padding: 3px;\">{{quantity}}</td>             <td style=\"padding: 3px;\">{{#if unit}}{{unit.name}}{{/if}}</td>             <td style=\"padding: 3px;\">{{unitPrice}}</td>             <td style=\"padding: 3px;\">{{#if discountPercentage}}{{discountPercentage}}%{{/if}}</td>             <td style=\"padding: 3px;\">{{vatRate}}</td>             <td style=\"padding: 3px;\">{{vatAmount}}</td>             <td style=\"padding: 3px;\">{{totalGrossAmount}}</td>         </tr>         {{/each}}     </table> {{/if}}  <div style=\"clear: both;\"></div>  <div style=\"float: right;\">     <table cellspacing=\"0\" style=\"width: 300px;\">         <tr>             <td style=\"padding: 5px; text-align: left; border-bottom: 1px solid #e0e0e0; vertical-align: middle;\">Subtotal</td>             <td style=\"text-align: right; border-bottom: 1px solid #e0e0e0; vertical-align: middle;\">{{netAmount}}</td>         </tr>         <tr>             <td style=\"padding: 5px; text-align: left; vertical-align: middle;\">Vat</td>             <td style=\"text-align: right; vertical-align: middle;\">{{vatAmount}}</td>         </tr>         <tr style=\"background-color: #e0e0e0;\">             <td style=\"padding: 5px; text-align: left; vertical-align: middle;\">                 <b>Total {{currency}}</b>             </td>             <td style=\"text-align: right; vertical-align: middle;\">                 <b>{{grossAmount}}</b>             </td>         </tr>     </table> </div>",
+                        "reminderTime" : "{{dueDateTimestamp}}"
+                    }
+                }
+            },
+            "recipe": {
+                "connections": [
+                    {
+                        "from": "step_1",
+                        "to": "step_4"
+                    },
+                    {
+                        "from": "step_4",
+                        "to": "step_2"
+                    },
+                    {
+                        "from": "step_2",
+                        "to": "step_5"
+                    },
+                    {
+                        "from": "step_5",
+                        "to": "step_3"
+                    }
+                ],
+                "nodes": [
+                    {
+                        "compId": "economic",
+                        "function": "getBookedInvoices",
+                        "id": "step_1",
+                        "first": true
+                    },
+                    {
+                        "compId": "mapper",
+                        "function": "map",
+                        "id": "step_4"
+                    },
+                    {
+                        "compId": "economic",
+                        "function": "getBookedInvoiceItems",
+                        "id": "step_2"
+                    },
+                    {
+                        "compId": "mapper",
+                        "function": "map",
+                        "id": "step_5"
+                    },
+                    {
+                        "compId": "evernote",
+                        "function": "create_note",
+                        "id": "step_3"
+                    }
+                ]
+            },
+            "dataRecordName": "invoice"
+        }
+    ]
+}
