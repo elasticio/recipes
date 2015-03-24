@@ -55,6 +55,9 @@
                         "vat-included": "{{vatIncluded}}"
                     }
                 },
+                "step_2": {
+                    "appId": "fake"
+                },
                 "step_5": {
                     "mapper": {
                         "description": "Invoice #{{id}} will expire soon",
