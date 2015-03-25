@@ -4,6 +4,9 @@
         {
             "title": "E-conomic to Podio",
             "data": {
+                "step_1": {
+                    "toDownloadPDF": false
+                },
                 "step_4": {
                     "mapper": {
                         "currency": "{{currency}}",
