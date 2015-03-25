@@ -2,6 +2,7 @@
     "cron": "*/3 * * * *",
     "recipes": [
         {
+            "title": "E-conomic to Podio",
             "data": {
                 "step_4": {
                     "mapper": {
