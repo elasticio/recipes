@@ -1,7 +1,7 @@
 {
   "name": "recipes",
   "description": "elastic.io recipes",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "http://elastic.io",
   "author": "elastic.io GmbH <info@elastic.io>",
   "private": false,
