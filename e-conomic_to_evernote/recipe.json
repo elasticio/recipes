@@ -3,6 +3,9 @@
     "recipes": [
         {
             "data": {
+                "step_1": {
+                    "toDownloadPDF": false
+                },
                 "step_4": {
                     "mapper": {
                         "id": "{{id}}"
