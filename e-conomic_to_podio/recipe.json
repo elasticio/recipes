@@ -2,7 +2,7 @@
     "cron": "*/3 * * * *",
     "recipes": [
         {
-            "title": "E-conomic to Podio",
+            "title": "e-conomic to Podio",
             "data": {
                 "step_1": {
                     "toDownloadPDF": false
