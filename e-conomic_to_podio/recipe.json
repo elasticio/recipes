@@ -1,128 +1,115 @@
 {
     "cron": "*/3 * * * *",
-    "recipes": [
-        {
-            "title": "e-conomic to Podio",
-            "data": {
-                "step_1": {
-                    "toDownloadPDF": false
-                },
-                "step_4": {
-                    "mapper": {
-                        "currency": "{{currency}}",
-                        "customer-address": "{{customer.address}}",
-                        "customer-city": "{{customer.city}}",
-                        "customer-country": "{{customer.country}}",
-                        "customer-county": "{{customer.county}}",
-                        "customer-name": "{{customer.name}}",
-                        "customer-number": "{{customer.customerNumber}}",
-                        "customer-postal-code": "{{customer.postalCode}}",
-                        "date": {
-                            "start": "{{date}}"
-                        },
-                        "deduction-amount": {
-                            "value": "{{deductionAmount}}",
-                            "currency": "{{currency}}"
-                        },
-                        "delivery-address": "{{deliveryAddress}}",
-                        "delivery-city": "{{deliveryCity}}",
-                        "delivery-postal-code": "{{deliveryPostalCode}}",
-                        "due-date": {
-                            "start": "{{dueDate}}"
-                        },
-                        "gross-amount": {
-                            "value": "{{grossAmount}}",
-                            "currency": "{{currency}}"
-                        },
-                        "id": "{{id}}",
-                        "heading": "{{heading}}",
-                        "net-amount": {
-                            "value": "{{netAmount}}",
-                            "currency": "{{currency}}"
-                        },
-                        "net-amount-base-currency": {
-                            "value": "{{netAmountBaseCurrency}}",
-                            "currency": "{{currency}}"
-                        },
-                        "order-id": "{{orderId}}",
-                        "payment-terms-number": "{{paymentTermsNumber}}",
-                        "remainder": "{{remainder}}",
-                        "remainder-base-currency": "{{remainderBaseCurrency}}",
-                        "rounding-amount": {
-                            "value": "{{roundingAmount}}",
-                            "currency": "{{currency}}"
-                        },
-                        "vat-amount": {
-                            "value": "{{vatAmount}}",
-                            "currency": "{{currency}}"
-                        },
-                        "vat-included": "{{vatIncluded}}"
-                    }
-                },
-                "step_2": {
-                    "appId": "fake"
-                },
-                "step_5": {
-                    "mapper": {
-                        "description": "Invoice #{{id}} will expire soon",
-                        "due_date": "{{due-date.start}}",
-                        "reminder": {
-                            "remind_delta": "720"
-                        },
-                        "text": "Invoice {{id}}",
-                        "external_id": "{{id}}"
-                    }
+    "recipes": [{
+        "title": "e-conomic to Podio",
+        "data": {
+            "step_1": {
+                "toDownloadPDF": false
+            },
+            "step_4": {
+                "mapper": {
+                    "currency": "{{currency}}",
+                    "customer-address": "{{customer.address}}",
+                    "customer-city": "{{customer.city}}",
+                    "customer-country": "{{customer.country}}",
+                    "customer-county": "{{customer.county}}",
+                    "customer-name": "{{customer.name}}",
+                    "customer-number": "{{customer.customerNumber}}",
+                    "customer-postal-code": "{{customer.postalCode}}",
+                    "date": {
+                        "start": "{{date}}"
+                    },
+                    "deduction-amount": {
+                        "value": "{{deductionAmount}}",
+                        "currency": "{{currency}}"
+                    },
+                    "delivery-address": "{{deliveryAddress}}",
+                    "delivery-city": "{{deliveryCity}}",
+                    "delivery-postal-code": "{{deliveryPostalCode}}",
+                    "due-date": {
+                        "start": "{{dueDate}}"
+                    },
+                    "gross-amount": {
+                        "value": "{{grossAmount}}",
+                        "currency": "{{currency}}"
+                    },
+                    "id": "{{id}}",
+                    "heading": "{{heading}}",
+                    "net-amount": {
+                        "value": "{{netAmount}}",
+                        "currency": "{{currency}}"
+                    },
+                    "net-amount-base-currency": {
+                        "value": "{{netAmountBaseCurrency}}",
+                        "currency": "{{currency}}"
+                    },
+                    "order-id": "{{orderId}}",
+                    "payment-terms-number": "{{paymentTermsNumber}}",
+                    "remainder": "{{remainder}}",
+                    "remainder-base-currency": "{{remainderBaseCurrency}}",
+                    "rounding-amount": {
+                        "value": "{{roundingAmount}}",
+                        "currency": "{{currency}}"
+                    },
+                    "vat-amount": {
+                        "value": "{{vatAmount}}",
+                        "currency": "{{currency}}"
+                    },
+                    "vat-included": "{{vatIncluded}}"
                 }
             },
-            "name": "e-conomic to podio",
-            "recipe": {
-                "connections": [
-                    {
-                        "from": "step_1",
-                        "to": "step_4"
+            "step_2": {
+                "appId": "fake"
+            },
+            "step_5": {
+                "mapper": {
+                    "description": "Invoice #{{id}} will expire soon",
+                    "due_date": "{{due-date.start}}",
+                    "reminder": {
+                        "remind_delta": "720"
                     },
-                    {
-                        "from": "step_4",
-                        "to": "step_2"
-                    },
-                    {
-                        "from": "step_2",
-                        "to": "step_5"
-                    },
-                    {
-                        "from": "step_5",
-                        "to": "step_3"
-                    }
-                ],
-                "nodes": [
-                    {
-                        "compId": "economic",
-                        "function": "getBookedInvoices",
-                        "id": "step_1",
-                        "first": true
-                    },
-                    {
-                        "compId": "mapper",
-                        "function": "map",
-                        "id": "step_4"
-                    },
-                    {
-                        "compId": "podio",
-                        "function": "createItem",
-                        "id": "step_2"
-                    },
-                    {
-                        "compId": "mapper",
-                        "function": "map",
-                        "id": "step_5"
-                    },
-                    {
-                        "compId": "podio",
-                        "function": "createTask",
-                        "id": "step_3"
-                    }
-                ]
+                    "text": "Invoice {{id}}",
+                    "external_id": "{{id}}"
+                }
             }
+        },
+        "name": "e-conomic to podio",
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_4"
+            }, {
+                "from": "step_4",
+                "to": "step_2"
+            }, {
+                "from": "step_2",
+                "to": "step_5"
+            }, {
+                "from": "step_5",
+                "to": "step_3"
+            }],
+            "nodes": [{
+                "compId": "economic",
+                "function": "getBookedInvoices",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_4"
+            }, {
+                "compId": "podio",
+                "function": "createItem",
+                "id": "step_2"
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_5"
+            }, {
+                "compId": "podio",
+                "function": "createTask",
+                "id": "step_3"
+            }]
         }
-    ]
+    }]
 }

@@ -1,1 +1,31 @@
-{"cron":"*/3 * * * *","recipes":[{"title":"Upload Debitoor expense documents to Box.com","description":"Allowes You to upload all Your Debitoor expense documents into Box.com account and folder of Your choice","recipe":{"connections":[{"from":"step_1","to":"step_3"},{"from":"step_3","to":"step_2"}],"nodes":[{"compId":"debitoor","function":"getExpenses","id":"step_1","first":true},{"compId":"mapper","function":"map","id":"step_3"},{"compId":"box","function":"upload_file","id":"step_2"}]},"dataRecordName":"expense"}]}
+{
+    "cron": "*/3 * * * *",
+    "recipes": [{
+        "title": "Upload Debitoor expense documents to Box.com",
+        "description": "Allowes You to upload all Your Debitoor expense documents into Box.com account and folder of Your choice",
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_3"
+            }, {
+                "from": "step_3",
+                "to": "step_2"
+            }],
+            "nodes": [{
+                "compId": "debitoor",
+                "function": "getExpenses",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_3"
+            }, {
+                "compId": "box",
+                "function": "upload_file",
+                "id": "step_2"
+            }]
+        },
+        "dataRecordName": "expense"
+    }]
+}

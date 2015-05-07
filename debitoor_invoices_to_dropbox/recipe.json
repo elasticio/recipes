@@ -1,44 +1,41 @@
 {
-  "cron": "*/3 * * * *",
-  "recipes": [
-    {
-      "title": "Debitoor Invoices to Dropbox",
-      "description": "Debitoor Invoices to Dropbox",
-      "data": {
-        "step_1": {"downloadPdf": true},
-        "step_3": {"mapper": {"fileName": "Invoices/{{year}}/{{month}}/{{customerName}}/Invoice-{{number}}.PDF"}}
-      },
-      "recipe": {
-        "connections": [
-          {
-            "from": "step_1",
-            "to": "step_3"
-          },
-          {
-            "from": "step_3",
-            "to": "step_2"
-          }
-        ],
-        "nodes": [
-          {
-            "compId": "debitoor",
-            "function": "getBookedInvoices",
-            "id": "step_1",
-            "first": true
-          },
-          {
-            "compId": "mapper",
-            "function": "map",
-            "id": "step_3"
-          },
-          {
-            "compId": "dropbox",
-            "function": "put",
-            "id": "step_2"
-          }
-        ]
-      },
-      "dataRecordName": "invoice"
-    }
-  ]
+    "cron": "*/3 * * * *",
+    "recipes": [{
+        "title": "Debitoor Invoices to Dropbox",
+        "description": "Debitoor Invoices to Dropbox",
+        "data": {
+            "step_1": {
+                "downloadPdf": true
+            },
+            "step_3": {
+                "mapper": {
+                    "fileName": "Invoices/{{year}}/{{month}}/{{customerName}}/Invoice-{{number}}.PDF"
+                }
+            }
+        },
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_3"
+            }, {
+                "from": "step_3",
+                "to": "step_2"
+            }],
+            "nodes": [{
+                "compId": "debitoor",
+                "function": "getBookedInvoices",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_3"
+            }, {
+                "compId": "dropbox",
+                "function": "put",
+                "id": "step_2"
+            }]
+        },
+        "dataRecordName": "invoice"
+    }]
 }

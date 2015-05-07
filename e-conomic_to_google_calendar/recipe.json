@@ -1,1 +1,49 @@
-{"cron":"*/3 * * * *","recipes":[{"title":"Create Google Calendar events from E-conomic invoice due dates","description":"Create Google Calendar events from E-conomic invoice due dates","data":{"step_1":{"toDownloadPDF":false},"step_3":{"mapper":{"description":"Booked invoice with invoice ID {{orderId}} for customer  {{customer.customerNumber}}  {{customer.name}} is due today","transparency":"transparent","end":{"dateTime":"{{dueDate}}"},"summary":"Invoice {{orderId}} due","start":{"dateTime":"{{dueDate}}"}}}},"recipe":{"connections":[{"from":"step_1","to":"step_3"},{"from":"step_3","to":"step_2"}],"nodes":[{"compId":"economic","function":"getBookedInvoices","id":"step_1","first":true},{"compId":"mapper","function":"map","id":"step_3"},{"compId":"google_calendar","function":"event_create","id":"step_2"}]},"dataRecordName":"invoice date"}]}
+{
+    "cron": "*/3 * * * *",
+    "recipes": [{
+        "title": "Create Google Calendar events from E-conomic invoice due dates",
+        "description": "Create Google Calendar events from E-conomic invoice due dates",
+        "data": {
+            "step_1": {
+                "toDownloadPDF": false
+            },
+            "step_3": {
+                "mapper": {
+                    "description": "Booked invoice with invoice ID {{orderId}} for customer  {{customer.customerNumber}}  {{customer.name}} is due today",
+                    "transparency": "transparent",
+                    "end": {
+                        "dateTime": "{{dueDate}}"
+                    },
+                    "summary": "Invoice {{orderId}} due",
+                    "start": {
+                        "dateTime": "{{dueDate}}"
+                    }
+                }
+            }
+        },
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_3"
+            }, {
+                "from": "step_3",
+                "to": "step_2"
+            }],
+            "nodes": [{
+                "compId": "economic",
+                "function": "getBookedInvoices",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_3"
+            }, {
+                "compId": "google_calendar",
+                "function": "event_create",
+                "id": "step_2"
+            }]
+        },
+        "dataRecordName": "invoice date"
+    }]
+}

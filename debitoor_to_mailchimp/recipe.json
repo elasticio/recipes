@@ -1,1 +1,39 @@
-{"cron":"*/15 * * * *","recipes":[{"title":"Sync Debitoor customers as Mailchimp subscribers","description":"Export your Debitoor customers into the Mailchimp service.","data":{"step_3":{"mapper":{"email":"{{email}}","firstName":"{{name}}"}}},"recipe":{"connections":[{"from":"step_1","to":"step_3"},{"from":"step_3","to":"step_2"}],"nodes":[{"compId":"debitoor","function":"getCustomers","id":"step_1","first":true},{"compId":"mapper","function":"map","id":"step_3"},{"compId":"mailchimp","function":"subscribe","id":"step_2"}]},"dataRecordName":"customer"}]}
+{
+    "cron": "*/15 * * * *",
+    "recipes": [{
+        "title": "Sync Debitoor customers as Mailchimp subscribers",
+        "description": "Export your Debitoor customers into the Mailchimp service.",
+        "data": {
+            "step_3": {
+                "mapper": {
+                    "email": "{{email}}",
+                    "firstName": "{{name}}"
+                }
+            }
+        },
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_3"
+            }, {
+                "from": "step_3",
+                "to": "step_2"
+            }],
+            "nodes": [{
+                "compId": "debitoor",
+                "function": "getCustomers",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_3"
+            }, {
+                "compId": "mailchimp",
+                "function": "subscribe",
+                "id": "step_2"
+            }]
+        },
+        "dataRecordName": "customer"
+    }]
+}
