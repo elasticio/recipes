@@ -1,13 +1,16 @@
 {
     "cron": "*/3 * * * *",
     "recipes": [{
-        "title": "e-conomic to Podio",
+        "recipeId": "invoices",
+        "name": "e-conomic booked invoices to podio",
+        "title": "e-conomic booked invoices to Podio",
         "data": {
             "step_1": {
                 "toDownloadPDF": true
             },
             "step_4": {
                 "mapper": {
+                    "external_id": "{{id}}",
                     "currency": "{{currency}}",
                     "customer-address": "{{customer.address}}",
                     "customer-city": "{{customer.city}}",
@@ -55,7 +58,10 @@
                         "value": "{{vatAmount}}",
                         "currency": "{{currency}}"
                     },
-                    "vat-included": "{{vatIncluded}}"
+                    "vat-included": "{{vatIncluded}}",
+                    "customer": {
+                        "value": "{{customer.customerNumber}}"
+                    }
                 }
             },
             "step_2": {
@@ -73,7 +79,6 @@
                 }
             }
         },
-        "name": "e-conomic to podio",
         "recipe": {
             "connections": [{
                 "from": "step_1",
@@ -110,6 +115,62 @@
                 "function": "createTask",
                 "id": "step_3"
             }]
+        }
+    },
+    {
+        "recipeId": "customers",
+        "name": "e-conomic customers to Podio",
+        "title": "e-conomic customers to Podio",
+        "recipe": {
+            "connections": [
+                {
+                    "from": "step_1",
+                    "to": "step_3"
+                },
+                {
+                    "from": "step_3",
+                    "to": "step_2"
+                }
+            ],
+            "nodes": [
+                {
+                    "compId": "economic",
+                    "function": "getCustomers",
+                    "id": "step_1",
+                    "first": true
+                },
+                {
+                    "compId": "mapper",
+                    "function": "map",
+                    "id": "step_3"
+                },
+                {
+                    "compId": "podio",
+                    "function": "createItem",
+                    "id": "step_2"
+                }
+            ]
+        },
+        "data": {
+            "step_3": {
+                "mapper": {
+                    "external_id": "{{items[*].customerNumber}}",
+                    "id": "{{items[*].customerNumber}}",
+                    "name": "{{items[*].name}}",
+                    "phone-fax": "{{items[*].telephoneAndFaxNumber}}",
+                    "e-mail": "{{items[*].email}}",
+                    "country": "{{items[*].country}}",
+                    "city": "{{items[*].city}}",
+                    "address": "{{items[*].address}}",
+                    "vat-number": "{{items[*].vatNumber}}",
+                    "website": "{{items[*].website}}",
+                    "vat-zone": "{{items[*].vatZone}}",
+                    "zip": "{{items[*].zip}}"
+                }
+            },
+            "step_2": {
+                "appId": "fake"
+            }
         }
     }]
 }
