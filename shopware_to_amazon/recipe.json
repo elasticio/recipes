@@ -3,10 +3,92 @@
         "title": "Shopware products to Amazon MWS",
         "description": "Shopware products to Amazon MWS",
         "data": {
-
+            "step_7" : {
+                "mapper" : {
+                    "feedSubmissionId" : "{{feedSubmissionId}}"
+                }
+            },
+            "step_6" : {
+                "mapper" : {
+                    "feedSubmissionId" : "{{feedSubmissionId}}"
+                }
+            },
+            "step_5" : {
+                "mapper" : {
+                    "products[*]" : {
+                        "title" : "{{product[*].name}}",
+                        "sku" : "{{product[*].variantId}}",
+                        "standardProductIDType" : "EAN",
+                        "standardProductIDValue" : "{{product[*].ean}}"
+                    }
+                }
+            }
         },
-        "recipe": {
-
+        "recipe" : {
+            "nodes" : [
+                {
+                    "first" : true,
+                    "id" : "step_1",
+                    "function" : "getProducts",
+                    "compId" : "shopware"
+                },
+                {
+                    "id" : "step_5",
+                    "function" : "map",
+                    "compId" : "mapper"
+                },
+                {
+                    "id" : "step_2",
+                    "function" : "submitProductFeed",
+                    "compId" : "amazonmws"
+                },
+                {
+                    "id" : "step_6",
+                    "function" : "map",
+                    "compId" : "mapper"
+                },
+                {
+                    "id" : "step_3",
+                    "function" : "getFeedSubmissionStatus",
+                    "compId" : "amazonmws"
+                },
+                {
+                    "id" : "step_7",
+                    "function" : "map",
+                    "compId" : "mapper"
+                },
+                {
+                    "id" : "step_4",
+                    "function" : "getFeedSubmissionResult",
+                    "compId" : "amazonmws"
+                }
+            ],
+            "connections" : [
+                {
+                    "to" : "step_5",
+                    "from" : "step_1"
+                },
+                {
+                    "to" : "step_2",
+                    "from" : "step_5"
+                },
+                {
+                    "to" : "step_6",
+                    "from" : "step_2"
+                },
+                {
+                    "to" : "step_3",
+                    "from" : "step_6"
+                },
+                {
+                    "to" : "step_7",
+                    "from" : "step_3"
+                },
+                {
+                    "to" : "step_4",
+                    "from" : "step_7"
+                }
+            ]
         },
         "dataRecordName": "product"
     }]
