@@ -1,0 +1,13 @@
+{
+    "recipes": [{
+        "title": "Shopware products to Amazon MWS",
+        "description": "Shopware products to Amazon MWS",
+        "data": {
+
+        },
+        "recipe": {
+
+        },
+        "dataRecordName": "product"
+    }]
+}
