@@ -1,0 +1,1 @@
+Shopware products to Amazon MWS
