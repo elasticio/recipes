@@ -8,7 +8,39 @@ var BRANCH = process.env.RECIPES_BRANCH || 'master';
 var GIT_CONTENT_PATH = 'https://raw.githubusercontent.com/elasticio/recipes/';
 var cache;
 
-exports.all = all;
+exports.connect = connect;
+exports.platform = platform;
+
+function platform() {
+    return all().then(filterPlatform).then(transformToRecipe);
+
+    function filterPlatform(recipes) {
+        return recipes.filter(filter);
+        function filter(recipe) {
+            return !~recipe.plan.indexOf('connect');
+        }
+    }
+
+    function transformToRecipe(recipes) {
+        return recipes.map(transform);
+        function transform(recipe) {
+            recipe.recipes[0].pricingPlan = recipe.plan;
+            recipe.recipes[0].id = recipe._id;
+            return recipe.recipes[0];
+        }
+    }
+}
+
+function connect() {
+    return all().then(filterConnect);
+
+    function filterConnect(recipes) {
+        return recipes.filter(filter);
+        function filter(recipe) {
+            return ~recipe.plan.indexOf('connect');
+        }
+    }
+}
 
 function all() {
     if (cache) {
