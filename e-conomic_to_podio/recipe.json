@@ -2,6 +2,7 @@
     "cron": "*/3 * * * *",
     "recipes": [{
         "_id": "customers",
+        "id": "customers",
         "name": "e-conomic customers to Podio",
         "title": "e-conomic customers to Podio",
         "recipe": {
@@ -58,6 +59,7 @@
     },
     {
         "_id": "invoices",
+        "id": "invoices",
         "name": "e-conomic booked invoices to podio",
         "title": "e-conomic booked invoices to Podio",
         "data": {
@@ -174,6 +176,7 @@
     },
     {
         "_id": "contacts",
+        "id": "contacts",
         "name": "e-conomic customer contacts to Podio",
         "title": "e-conomic customer contacts to Podio",
         "recipe": {
