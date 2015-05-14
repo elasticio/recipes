@@ -1,1 +1,74 @@
-{"cron":"*/3 * * * *","recipes":[{"title":"Salesforce contacts to Mailjet","description":"Synchronises all Your Salesforce contacts with Mailjet. Both old and new. Both created and updated.","data":{"step_3":{"mapper":{"Email":"{{Email}}","Name":"{{FirstName}} {{LastName}}"}}},"recipe":{"connections":[{"from":"step_1","to":"step_3"},{"from":"step_3","to":"step_2"}],"nodes":[{"compId":"salesforce","function":"newContact","id":"step_1","first":true},{"compId":"mapper","function":"map","id":"step_3"},{"compId":"mailjet","function":"create_contact","id":"step_2"}]},"dataRecordName":"contact"},{"title":"Salesforce Leads to Mailjet","description":"Synchronises all Your Salesforce Leads with Mailjet. Both old and new. Both created and updated.","data":{"step_3":{"mapper":{"Email":"{{Email}}","Name":"{{FirstName}} {{LastName}}"}}},"recipe":{"connections":[{"from":"step_1","to":"step_3"},{"from":"step_3","to":"step_2"}],"nodes":[{"compId":"salesforce","function":"newLead","id":"step_1","first":true},{"compId":"mapper","function":"map","id":"step_3"},{"compId":"mailjet","function":"create_contact","id":"step_2"}]},"dataRecordName":"lead"}]}
+{
+    "cron": "*/3 * * * *",
+    "recipes": [{
+        "title": "Salesforce contacts to Mailjet",
+        "description": "Synchronises all Your Salesforce contacts with Mailjet. Both old and new. Both created and updated.",
+        "data": {
+            "step_3": {
+                "mapper": {
+                    "Email": "{{Email}}",
+                    "Name": "{{FirstName}} {{LastName}}"
+                }
+            }
+        },
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_3"
+            }, {
+                "from": "step_3",
+                "to": "step_2"
+            }],
+            "nodes": [{
+                "compId": "salesforce",
+                "function": "newContact",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_3"
+            }, {
+                "compId": "mailjet",
+                "function": "create_contact",
+                "id": "step_2"
+            }]
+        },
+        "dataRecordName": "contact"
+    }, {
+        "title": "Salesforce Leads to Mailjet",
+        "description": "Synchronises all Your Salesforce Leads with Mailjet. Both old and new. Both created and updated.",
+        "data": {
+            "step_3": {
+                "mapper": {
+                    "Email": "{{Email}}",
+                    "Name": "{{FirstName}} {{LastName}}"
+                }
+            }
+        },
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_3"
+            }, {
+                "from": "step_3",
+                "to": "step_2"
+            }],
+            "nodes": [{
+                "compId": "salesforce",
+                "function": "newLead",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_3"
+            }, {
+                "compId": "mailjet",
+                "function": "create_contact",
+                "id": "step_2"
+            }]
+        },
+        "dataRecordName": "lead"
+    }]
+}

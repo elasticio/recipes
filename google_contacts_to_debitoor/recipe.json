@@ -1,1 +1,45 @@
-{"cron":"*/15 * * * *","recipes":[{"title":"Sync Google Contacts as Debitoor Customers","description":"Export all your Google Contacts as Debitor customers","data":{"step_3":{"mapper":{"externalId":"{{items[*].id}}","name":"{{items[*].fullName}}","email":"{{items[*].email}}","homepage":"{{items[*].profileUrl}}"}},"step_2":{"countryCode":"AF","paymentTermsId":"1"}},"recipe":{"connections":[{"from":"step_1","to":"step_3"},{"from":"step_3","to":"step_2"}],"nodes":[{"compId":"google_contact","function":"list","id":"step_1","first":true},{"compId":"mapper","function":"map","id":"step_3"},{"compId":"debitoor","function":"createOrUpdateCustomer","id":"step_2"}]},"dataRecordName":"contact"}]}
+{
+    "cron": "*/15 * * * *",
+    "recipes": [{
+        "title": "Sync Google Contacts as Debitoor Customers",
+        "description": "Export all your Google Contacts as Debitor customers",
+        "data": {
+            "step_3": {
+                "mapper": {
+                    "externalId": "{{items[*].id}}",
+                    "name": "{{items[*].fullName}}",
+                    "email": "{{items[*].email}}",
+                    "homepage": "{{items[*].profileUrl}}"
+                }
+            },
+            "step_2": {
+                "countryCode": "AF",
+                "paymentTermsId": "1"
+            }
+        },
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_3"
+            }, {
+                "from": "step_3",
+                "to": "step_2"
+            }],
+            "nodes": [{
+                "compId": "google_contact",
+                "function": "list",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_3"
+            }, {
+                "compId": "debitoor",
+                "function": "createOrUpdateCustomer",
+                "id": "step_2"
+            }]
+        },
+        "dataRecordName": "contact"
+    }]
+}

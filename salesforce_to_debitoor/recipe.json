@@ -1,1 +1,122 @@
-{"cron":"*/3 * * * *","recipes":[{"title":"Salesforce Account to Debitoor Customer","description":"Recipe for Salesforce Account to Debitoor Customer","data":{"step_3":{"mapper":{"externalId":"{{Id}}","name":"{{Name}}","countryName":"{{BillingCountry}}","homepage":"{{Website}}","address":"{{BillingPostalCode}} {{BillingState}} {{BillingCity}} {{BillingStreet}} {{Site}}","phone":"{{Phone}}"}}},"recipe":{"connections":[{"from":"step_1","to":"step_3"},{"from":"step_3","to":"step_2"}],"nodes":[{"compId":"salesforce","function":"newAccount","id":"step_1","first":true},{"compId":"mapper","function":"map","id":"step_3"},{"compId":"debitoor","function":"createOrUpdateCustomer","id":"step_2"}]},"dataRecordName":"account"},{"title":"Salesforce Contact to Debitoor Customer","description":"Recipe for Salesforce Contact to Debitoor Customer","data":{"step_3":{"mapper":{"name":" {{FirstName}} {{LastName}}","countryName":"{{MailingCountry}}","address":"{{MailingPostalCode}} {{MailingState}} {{MailingCity}} {{MailingStreet}}","email":"{{Email}}","externalId":"{{Id}}","phone":"{{MobilePhone}}"}}},"recipe":{"connections":[{"from":"step_1","to":"step_3"},{"from":"step_3","to":"step_2"}],"nodes":[{"compId":"salesforce","function":"newContact","id":"step_1","first":true},{"compId":"mapper","function":"map","id":"step_3"},{"compId":"debitoor","function":"createOrUpdateCustomer","id":"step_2"}]},"dataRecordName":"contact"},{"title":"Salesforce Leads to Debitoor Customers","description":"Salesforce Leads to Debitoor Customers","data":{"step_3":{"mapper":{"name":"UPD {{FirstName}} {{LastName}}","phone":"{{Phone}}","homepage":"{{Website}}","email":"{{Email}}","countryName":"{{Country}} ","address":"{{PostalCode}} {{State}} {{City}} {{Street}}","externalId":"{{Id}}"}}},"recipe":{"connections":[{"from":"step_1","to":"step_3"},{"from":"step_3","to":"step_2"}],"nodes":[{"compId":"salesforce","function":"newLead","id":"step_1","first":true},{"compId":"mapper","function":"map","id":"step_3"},{"compId":"debitoor","function":"createOrUpdateCustomer","id":"step_2"}]},"dataRecordName":"lead"}]}
+{
+    "cron": "*/3 * * * *",
+    "recipes": [{
+        "title": "Salesforce Account to Debitoor Customer",
+        "description": "Recipe for Salesforce Account to Debitoor Customer",
+        "data": {
+            "step_3": {
+                "mapper": {
+                    "externalId": "{{Id}}",
+                    "name": "{{Name}}",
+                    "countryName": "{{BillingCountry}}",
+                    "homepage": "{{Website}}",
+                    "address": "{{BillingPostalCode}} {{BillingState}} {{BillingCity}} {{BillingStreet}} {{Site}}",
+                    "phone": "{{Phone}}"
+                }
+            }
+        },
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_3"
+            }, {
+                "from": "step_3",
+                "to": "step_2"
+            }],
+            "nodes": [{
+                "compId": "salesforce",
+                "function": "newAccount",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_3"
+            }, {
+                "compId": "debitoor",
+                "function": "createOrUpdateCustomer",
+                "id": "step_2"
+            }]
+        },
+        "dataRecordName": "account"
+    }, {
+        "title": "Salesforce Contact to Debitoor Customer",
+        "description": "Recipe for Salesforce Contact to Debitoor Customer",
+        "data": {
+            "step_3": {
+                "mapper": {
+                    "name": " {{FirstName}} {{LastName}}",
+                    "countryName": "{{MailingCountry}}",
+                    "address": "{{MailingPostalCode}} {{MailingState}} {{MailingCity}} {{MailingStreet}}",
+                    "email": "{{Email}}",
+                    "externalId": "{{Id}}",
+                    "phone": "{{MobilePhone}}"
+                }
+            }
+        },
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_3"
+            }, {
+                "from": "step_3",
+                "to": "step_2"
+            }],
+            "nodes": [{
+                "compId": "salesforce",
+                "function": "newContact",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_3"
+            }, {
+                "compId": "debitoor",
+                "function": "createOrUpdateCustomer",
+                "id": "step_2"
+            }]
+        },
+        "dataRecordName": "contact"
+    }, {
+        "title": "Salesforce Leads to Debitoor Customers",
+        "description": "Salesforce Leads to Debitoor Customers",
+        "data": {
+            "step_3": {
+                "mapper": {
+                    "name": "UPD {{FirstName}} {{LastName}}",
+                    "phone": "{{Phone}}",
+                    "homepage": "{{Website}}",
+                    "email": "{{Email}}",
+                    "countryName": "{{Country}} ",
+                    "address": "{{PostalCode}} {{State}} {{City}} {{Street}}",
+                    "externalId": "{{Id}}"
+                }
+            }
+        },
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_3"
+            }, {
+                "from": "step_3",
+                "to": "step_2"
+            }],
+            "nodes": [{
+                "compId": "salesforce",
+                "function": "newLead",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_3"
+            }, {
+                "compId": "debitoor",
+                "function": "createOrUpdateCustomer",
+                "id": "step_2"
+            }]
+        },
+        "dataRecordName": "lead"
+    }]
+}

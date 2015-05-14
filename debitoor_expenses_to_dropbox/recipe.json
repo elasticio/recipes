@@ -1,41 +1,38 @@
 {
-  "cron": "*/3 * * * *",
-  "recipes": [
-    {
-      "title": "Debitoor Expenses to Dropbox",
-      "description": "Automatically backup debitoor expenses to Dropbox",
-      "data": {"step_3": {"mapper": {"fileName": "Expenses/{{year}}/{{month}}/{{id}}_{{file.fileName}}"}}},
-      "recipe": {
-        "connections": [
-          {
-            "from": "step_1",
-            "to": "step_3"
-          },
-          {
-            "from": "step_3",
-            "to": "step_2"
-          }
-        ],
-        "nodes": [
-          {
-            "compId": "debitoor",
-            "function": "getExpenses",
-            "id": "step_1",
-            "first": true
-          },
-          {
-            "compId": "mapper",
-            "function": "map",
-            "id": "step_3"
-          },
-          {
-            "compId": "dropbox",
-            "function": "put",
-            "id": "step_2"
-          }
-        ]
-      },
-      "dataRecordName": "expense"
-    }
-  ]
+    "cron": "*/3 * * * *",
+    "recipes": [{
+        "title": "Debitoor Expenses to Dropbox",
+        "description": "Automatically backup debitoor expenses to Dropbox",
+        "data": {
+            "step_3": {
+                "mapper": {
+                    "fileName": "Expenses/{{year}}/{{month}}/{{id}}_{{file.fileName}}"
+                }
+            }
+        },
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_3"
+            }, {
+                "from": "step_3",
+                "to": "step_2"
+            }],
+            "nodes": [{
+                "compId": "debitoor",
+                "function": "getExpenses",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_3"
+            }, {
+                "compId": "dropbox",
+                "function": "put",
+                "id": "step_2"
+            }]
+        },
+        "dataRecordName": "expense"
+    }]
 }
