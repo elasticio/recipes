@@ -1,1 +1,1 @@
-Upload Debitoor expense documents to Box.com
+Automatically uploads Debitoor expense documents as PDF files to Box.com account. On-the-go access to all expenses via the Box mobile app.

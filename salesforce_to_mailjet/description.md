@@ -1,1 +1,1 @@
-Salesforce Contacts and Leads to Mailjet
+Imports all existing and new Salesforce Contacts as well as Salesforce Leads to Mailjet and automatically synchronizes any updates.

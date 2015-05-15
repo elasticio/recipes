@@ -1,1 +1,1 @@
-Sync Debitoor customers as Mailchimp subscribers
+All existing, new and updated Debitoor customers as well as customer information will be automatically added or updated in MailChimp.

@@ -1,1 +1,1 @@
-Create evernote notes from E-conomic booked invoices
+Creates new notes in Evernote for each booked invoice from e-conomic account. Notes are tagged by the customer's name and final payment date.

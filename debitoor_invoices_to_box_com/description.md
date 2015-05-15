@@ -1,1 +1,1 @@
-Upload Debitoor invoice documents to Box.com
+Automatically exports your Debitoor invoices as PDF files to your Box.com account. On-the-go access to all invoices via the Box mobile app.

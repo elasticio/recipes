@@ -1,1 +1,1 @@
-Create Podio items from E-conomic booked invoices
+Automatically creates new items in Podio for each booked invoice from an e-conomic account, a new customer contact and a new customer.

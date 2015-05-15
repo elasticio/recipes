@@ -1,1 +1,1 @@
-Upload Debitoor invoice documents to Google Drive
+Automatically exports your existing and new Debitoor invoices as PDF files to your Google Drive account placing them in the root folder.

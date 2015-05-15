@@ -1,1 +1,1 @@
-Shipped Amazon Invoices To E-Conomic
+Creates a new e-conomic invoice for each new shipped Amazon Marketplace order as well as creates and updates Amazon Merchent customers in e-conomic. 
