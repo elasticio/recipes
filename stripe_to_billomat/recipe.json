@@ -1,0 +1,57 @@
+{
+    "cron": "*/3 * * * *",
+    "recipes": [
+        {
+            "title": "Import stripe invoices to billomat",
+            "description": "Import stripe invoices to billomat",
+            "dataRecordName": "invoice",
+            "data": {
+                "step_3": {
+                    "mapper": {
+                        "client": {
+                            "email": "{{customer.email}}"
+                        },
+                        "invoice": {
+                            "net_gross": "GROSS",
+                            "date": "{{date}}",
+                            "note": "{{id}}"
+                        },
+                        "invoice-items[*]": {
+                            "invoice-item": {
+                                "description": "{{lines[*].description}}",
+                                "quantity": "{{lines[*].quantity}}",
+                                "unit_price": "{{lines[*].amount}}",
+                                "tax_rate": "{{tax_percent}}",
+                                "title": "{{lines[*].description}}",
+                                "tax_name": "VAT"
+                            }
+                        }
+                    }
+                }
+            },
+            "recipe": {
+                "connections": [{
+                    "from": "step_1",
+                    "to": "step_3"
+                }, {
+                    "from": "step_3",
+                    "to": "step_2"
+                }],
+                "nodes": [{
+                    "compId": "stripe",
+                    "function": "getSucceedInvoices",
+                    "id": "step_1",
+                    "first": true
+                }, {
+                    "compId": "mapper",
+                    "function": "map",
+                    "id": "step_3"
+                }, {
+                    "compId": "billomat",
+                    "function": "createInvoice",
+                    "id": "step_2"
+                }]
+            }
+        }
+    ]
+}
