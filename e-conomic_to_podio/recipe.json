@@ -48,7 +48,6 @@
                     "address": "{{items[*].address}}",
                     "vat-number": "{{items[*].vatNumber}}",
                     "website": "{{items[*].website}}",
-                    "vat-zone": "{{items[*].vatZone}}",
                     "zip": "{{items[*].zip}}"
                 }
             },
