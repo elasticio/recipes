@@ -31,7 +31,8 @@
                 {
                     "compId": "podio",
                     "function": "createItem",
-                    "id": "step_2"
+                    "id": "step_2",
+                    "noDynamicMetadata": true
                 }
             ]
         },
@@ -161,7 +162,8 @@
             }, {
                 "compId": "podio",
                 "function": "createItem",
-                "id": "step_2"
+                "id": "step_2",
+                "noDynamicMetadata": true
             }, {
                 "compId": "mapper",
                 "function": "map",
@@ -222,7 +224,8 @@
                 {
                     "compId": "podio",
                     "function": "createItem",
-                    "id": "step_3"
+                    "id": "step_3",
+                    "noDynamicMetadata": true
                 }
             ]
         },
