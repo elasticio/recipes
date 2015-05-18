@@ -53,7 +53,7 @@
                 "mapper": {
                     "externalId": "{{Id}}",
                     "currency": "BRL",
-                    "name": "{{LastName}}",
+                    "name": "{{Name}}",
                     "address": "{{BillingStreet}}",
                     "city": "{{BillingCity}}",
                     "country": "{{BillingCountry}}",
