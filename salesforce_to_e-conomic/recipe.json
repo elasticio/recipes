@@ -2,6 +2,7 @@
     "cron": "*/3 * * * *",
     "recipes": [{
         "_id": "contacts",
+        "id": "contacts",
         "title": "Salesforce contacts to E-conomic customers",
         "description": "Salesforce contacts to E-conomic customers",
         "data": {
@@ -48,6 +49,7 @@
         "dataRecordName": "contact"
     }, {
         "_id": "accounts",
+        "id": "accounts",
         "title": "Salesforce accounts to E-conomic customers",
         "description": "Synchronise all your Salesforce accounts into E-conomic customers. We're talking both new accounts and updates.",
         "data": {
