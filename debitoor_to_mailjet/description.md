@@ -1,1 +1,1 @@
-Debitoor customers to Mailjet
+All existing, new and updated Debitoor customers as well as customer information will be automatically added or updated in Mailjet.

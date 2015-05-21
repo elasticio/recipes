@@ -1,1 +1,1 @@
-Upload Debitoor invoice documents to Dropbox
+Automatically exports your existing and new Debitoor invoices as PDF files to your Dropbox account. On-the-go access via the Dropbox mobile app.

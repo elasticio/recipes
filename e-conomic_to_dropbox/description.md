@@ -1,1 +1,1 @@
-Upload E-conomic booked invoices to Dropbox
+Automatically uploads booked e-conomic invoices to Dropbox account. You'll have on-the-go access to all your invoices via the Dropbox mobile app. 

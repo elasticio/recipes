@@ -1,1 +1,1 @@
-E-conomic Invoice dates to Google Calendar
+Marks due-dates of booked invoices in Google Calendar creating a whole-day event with the 'available' flag set. Get an overview of all pending invoices.

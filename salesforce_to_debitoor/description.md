@@ -1,1 +1,1 @@
-Salesforce Contacts and Accounts to Debitoor
+Creates a Debitoor customer for each existing and new Salesforce Account as well as Salesforce Contact and regularly syncs any record changes.

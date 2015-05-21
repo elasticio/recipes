@@ -1,1 +1,1 @@
-Debitoor Invoice dates & due dates to Google Calendar
+Marks invoice dates as well as due-dates of booked invoices in Google Calendar creating a whole-day event set as 'available/free' by default.

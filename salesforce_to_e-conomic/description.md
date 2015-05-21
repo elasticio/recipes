@@ -1,1 +1,1 @@
-Salesforce Contacts and Accounts to E-Conomic
+Creates an e-conomic customer for each existing and new Salesforce Contact and Salesforce Account and regularly syncs any record changes.

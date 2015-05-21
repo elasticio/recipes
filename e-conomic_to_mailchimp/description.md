@@ -1,1 +1,1 @@
-Subscribe E-conomic customers to a Mailchimp list
+Each new or updated e-conomic customer's e-mail will be automatically added or updated in the corresponding MailChimp subscribers list.

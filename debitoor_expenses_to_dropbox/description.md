@@ -1,1 +1,1 @@
-Upload Debitoor expense documents to Dropbox
+Automatically exports your existing and new Debitoor expenses as PDF files to your Dropbox account. On-the-go access via the Dropbox mobile app.

@@ -1,1 +1,1 @@
-Mandrill events to Keen.io Event Collection
+Automatically imports and synchronizes events from Mandrill to Keen IO allowing you to see all stats without leaving your Keen IO account.

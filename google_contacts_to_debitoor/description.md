@@ -1,1 +1,1 @@
-Google Contacts to Debitoor
+Uploads existing and new contacts from Google Contacts to Debitoor account and syncs them on a regular basis. Note: no changes in Debitoor will be synced back.

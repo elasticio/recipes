@@ -1,1 +1,1 @@
-Google Contacts to Mailjet
+Imports all existing and new contacts from Google Contacts to Mailjet account and automatically syncs them on a regular basis.
