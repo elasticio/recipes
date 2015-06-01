@@ -10,6 +10,7 @@ var cache;
 
 exports.connect = connect;
 exports.platform = platform;
+exports.all = all;
 
 function platform() {
     return all().then(filterPlatform).then(transformToRecipe);
