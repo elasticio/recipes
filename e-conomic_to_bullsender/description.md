@@ -1,1 +1,1 @@
-Add your existing and new contacts in e-conomic to your Bullsender account
+Add your existing and new contacts from e-conomic to your Bullsender account
