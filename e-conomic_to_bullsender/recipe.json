@@ -1,0 +1,45 @@
+{
+	"cron": "*/60 * * * *",
+	"recipes" : [{
+    	"title": "e-conomic to Bullsender",
+	    "description": "e-conomic to Bullsender",
+	    "data": {
+	        "step_3": {
+	            "mapper": {
+	                "email": "{{items[*].email}}"
+	            }
+	        }
+	    },
+	    "recipe": {
+	        "connections": [
+	            {
+	                "from": "step_1",
+	                "to": "step_3"
+	            },
+	            {
+	                "from": "step_3",
+	                "to": "step_2"
+	            }
+	        ],
+	        "nodes": [
+	            {
+	                "compId": "economic",
+	                "function": "getCustomers",
+	                "id": "step_1",
+	                "first": true
+	            },
+	            {
+	                "compId": "mapper",
+	                "function": "map",
+	                "id": "step_3"
+	            },
+	            {
+	                "compId": "bullsender",
+	                "function": "add_subscriber",
+	                "id": "step_2"
+	            }
+	        ]
+	    },
+	    "dataRecordName": "contact"
+	}]
+}
