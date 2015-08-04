@@ -67,18 +67,6 @@
             }, {
                 "from": "step_7",
                 "to": "step_3"
-            }, {
-                "from": "step_3",
-                "to": "step_8"
-            }, {
-                "from": "step_8",
-                "to": "step_4"
-            }, {
-                "from": "step_4",
-                "to": "step_9"
-            }, {
-                "from": "step_9",
-                "to": "step_5"
             }],
             "nodes": [{
                 "compId": "amazonmws",
@@ -101,22 +89,6 @@
                 "compId": "billomat",
                 "function": "createInvoice",
                 "id": "step_3"
-            }, {
-                "compId": "mapper",
-                "function": "map",
-                "id": "step_8"
-            }, {
-                "compId": "billomat",
-                "function": "completeInvoice",
-                "id": "step_4"
-            }, {
-                "compId": "mapper",
-                "function": "map",
-                "id": "step_9"
-            }, {
-                "compId": "billomat",
-                "function": "emailInvoice",
-                "id": "step_5"
             }]
         },
         "dataRecordName": "invoice"
