@@ -26,9 +26,9 @@
                     "invoice": {
                         "label": "Amazon order {{amazonOrderId}}",
                         "title": "Amazon order {{amazonOrderId}}",
-                        "note": "{{amazonOrderId}}",
+                        "note": "Die Rechnung ist bereits bezahlt. \nAmazon Bestellung Nr: {{amazonOrderId}}",
                         "currency_code": "{{orderItems[*].itemPrice.currencyCode}}",
-                        "address": "{{amazonOrder.shippingAddress.addressLine1}} {{amazonOrder.shippingAddress.postalCode}} {{amazonOrder.shippingAddress.city}} {{amazonOrder.shippingAddress.stateOrRegion}} {{amazonOrder.shippingAddress.countryCode}}"
+                        "address": "{{amazonOrder.shippingAddress.addressLine1}} \n{{amazonOrder.shippingAddress.postalCode}} {{amazonOrder.shippingAddress.city}} {{amazonOrder.shippingAddress.stateOrRegion}} {{amazonOrder.shippingAddress.countryCode}}"
                     },
                     "client": {
                         "city": "{{amazonOrder.shippingAddress.city}}",
