@@ -1,5 +1,11 @@
 {
     "cron": "*/3 * * * *",
+    "lookupTables": {
+		"Salutation German": {
+			"mr": "Herr",
+			"ms": "Frau"
+		}
+	},
     "recipes": [
         {
             "title": "New Mailchimp subscriber",
@@ -15,6 +21,9 @@
                         "lastName": "{{last}}",
                         "salutation": "{{salutation}}",
                         "optInIP": "{{ip}}"
+                    },
+                    "lookupTables": {
+                        "salutation": "Salutation German"
                     }
                 }
             },
