@@ -1,0 +1,1 @@
+This recipe works only in combination with elastic.io Shopware newsletter plugin.

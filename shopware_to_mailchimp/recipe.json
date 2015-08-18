@@ -1,0 +1,110 @@
+{
+    "cron": "*/3 * * * *",
+    "lookupTables": {
+		"Salutation German": {
+			"mr": "Herr",
+			"ms": "Frau"
+		}
+	},
+    "recipes": [
+        {
+            "title": "New Mailchimp subscriber",
+            "data": {
+                "step_1": {
+                    "payload": "email,first,last,salutation,ip"
+                },
+                "step_3": {
+                    "mapper": {
+                        "email": "{{email}}",
+                        "email_type": "html",
+                        "firstName": "{{first}}",
+                        "lastName": "{{last}}",
+                        "salutation": "{{salutation}}",
+                        "optInIP": "{{ip}}"
+                    },
+                    "lookupTables": {
+                        "salutation": "Salutation German"
+                    }
+                }
+            },
+            "recipe": {
+                "connections": [
+                    {
+                        "from": "step_1",
+                        "to": "step_3"
+                    },
+                    {
+                        "from": "step_3",
+                        "to": "step_2"
+                    }
+                ],
+                "nodes": [
+                    {
+                        "compId": "webhook",
+                        "function": "receive",
+                        "id": "step_1",
+                        "first": true
+                    },
+                    {
+                        "compId": "mapper",
+                        "function": "map",
+                        "id": "step_3"
+                    },
+                    {
+                        "compId": "mailchimp",
+                        "function": "subscribe",
+                        "id": "step_2"
+                    }
+                ]
+            },
+            "dataRecordName": "subscriber"
+        },
+        {
+            "title": "Un-subscribe from Mailchimp",
+            "data": {
+                "step_1": {
+                    "payload": "email"
+                },
+                "step_3": {
+                    "mapper": {
+                        "delete_member": "0",
+                        "email": "{{email}}",
+                        "send_goodbye": "0",
+                        "send_notify": "0"
+                    }
+                }
+            },
+            "recipe": {
+                "connections": [
+                    {
+                        "from": "step_1",
+                        "to": "step_3"
+                    },
+                    {
+                        "from": "step_3",
+                        "to": "step_2"
+                    }
+                ],
+                "nodes": [
+                    {
+                        "compId": "webhook",
+                        "function": "receive",
+                        "id": "step_1",
+                        "first": true
+                    },
+                    {
+                        "compId": "mapper",
+                        "function": "map",
+                        "id": "step_3"
+                    },
+                    {
+                        "compId": "mailchimp",
+                        "function": "unsubscribe",
+                        "id": "step_2"
+                    }
+                ]
+            },
+            "dataRecordName": "un-subscriber"
+        }
+    ]
+}
