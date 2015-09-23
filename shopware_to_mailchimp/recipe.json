@@ -15,6 +15,7 @@
                 },
                 "step_3": {
                     "mapper": {
+                    	"language": "de",
                         "email": "{{email}}",
                         "email_type": "html",
                         "firstName": "{{first}}",
