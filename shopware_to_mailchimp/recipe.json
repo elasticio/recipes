@@ -9,6 +9,7 @@
     "recipes": [
         {
             "title": "New Mailchimp subscriber",
+            "platformVersion" : "2.0",
             "data": {
                 "step_1": {
                     "payload": "email,first,last,salutation,ip"
@@ -61,6 +62,7 @@
         },
         {
             "title": "Un-subscribe from Mailchimp",
+            "platformVersion" : "2.0",
             "data": {
                 "step_1": {
                     "payload": "email"
