@@ -1,21 +1,21 @@
 {
     "cron": "*/3 * * * *",
     "lookupTables": {
-		"Salutation German": {
-			"mr": "Herr",
-			"ms": "Frau"
-		}
-	},
+        "Salutation German": {
+            "mr": "Herr",
+            "ms": "Frau"
+        }
+    },
     "recipes": [
         {
             "title": "New Mailchimp subscriber",
+            "platformVersion" : "2.0",
             "data": {
                 "step_1": {
                     "payload": "email,first,last,salutation,ip"
                 },
                 "step_3": {
                     "mapper": {
-                    	"language": "de",
                         "email": "{{email}}",
                         "email_type": "html",
                         "firstName": "{{first}}",
@@ -41,7 +41,7 @@
                 ],
                 "nodes": [
                     {
-                        "compId": "webhook",
+                        "compId": "55ba18e35d04040500000004",
                         "function": "receive",
                         "id": "step_1",
                         "first": true
@@ -52,7 +52,7 @@
                         "id": "step_3"
                     },
                     {
-                        "compId": "mailchimp",
+                        "compId": "55fadaa183fcb90c00000034",
                         "function": "subscribe",
                         "id": "step_2"
                     }
@@ -62,6 +62,7 @@
         },
         {
             "title": "Un-subscribe from Mailchimp",
+            "platformVersion" : "2.0",
             "data": {
                 "step_1": {
                     "payload": "email"
@@ -88,7 +89,7 @@
                 ],
                 "nodes": [
                     {
-                        "compId": "webhook",
+                        "compId": "55ba18e35d04040500000004",
                         "function": "receive",
                         "id": "step_1",
                         "first": true
@@ -99,7 +100,7 @@
                         "id": "step_3"
                     },
                     {
-                        "compId": "mailchimp",
+                        "compId": "55fadaa183fcb90c00000034",
                         "function": "unsubscribe",
                         "id": "step_2"
                     }
