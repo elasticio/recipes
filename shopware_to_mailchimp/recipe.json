@@ -40,7 +40,7 @@
                 ],
                 "nodes": [
                     {
-                        "compId": "webhook",
+                        "compId": "55ba18e35d04040500000004",
                         "function": "receive",
                         "id": "step_1",
                         "first": true
@@ -51,7 +51,7 @@
                         "id": "step_3"
                     },
                     {
-                        "compId": "mailchimp",
+                        "compId": "55fadaa183fcb90c00000034",
                         "function": "subscribe",
                         "id": "step_2"
                     }
