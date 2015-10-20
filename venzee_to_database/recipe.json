@@ -1,0 +1,31 @@
+{
+    "cron": "*/3 * * * *",
+    "recipes": [{
+        "title": "Export Venzee collection to database",
+        "description": "Allows you to export a Venzee collection to a Database table",
+        "recipe": {
+            "connections": [{
+                "from": "step_1",
+                "to": "step_2"
+            }, {
+                "from": "step_2",
+                "to": "step_3"
+            }],
+            "nodes": [{
+                "compId": "venzee",
+                "function": "getRecords",
+                "id": "step_1",
+                "first": true
+            }, {
+                "compId": "mapper",
+                "function": "map",
+                "id": "step_2"
+            }, {
+                "compId": "database",
+                "function": "createOrUpdateRecord",
+                "id": "step_3"
+            }]
+        },
+        "dataRecordName": "record"
+    }]
+}

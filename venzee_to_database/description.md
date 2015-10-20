@@ -1,0 +1,1 @@
+Exports a Venzee collection to a Database table
