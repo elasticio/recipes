@@ -12,16 +12,16 @@
                 "to": "step_3"
             }],
             "nodes": [{
-                "compId": "venzee",
+                "compId": "56141507a53f1f050000001a",
                 "function": "getRecords",
                 "id": "step_1",
                 "first": true
             }, {
-                "compId": "mapper",
+                "compId": "557aee0d5925ab0900000002",
                 "function": "map",
                 "id": "step_2"
             }, {
-                "compId": "database",
+                "compId": "55ffca6ecc04c20600000001",
                 "function": "createOrUpdateRecord",
                 "id": "step_3"
             }]
